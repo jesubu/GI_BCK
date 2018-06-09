@@ -1,0 +1,19 @@
+{
+  "name": "bck",
+  "version": "1.0.0",
+  "description": "Api RESTful en Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesubu/GI_BCK.git"
+  },
+  "author": "jesubu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesubu/GI_BCK/issues"
+  },
+  "homepage": "https://github.com/jesubu/GI_BCK#readme"
+}
