@@ -12,7 +12,9 @@ var SGUsuariosSchema=Schema({
     password:{type: String, required:[true,'El nombre es necesario.']},
     img:{type: String},
     fechaCreacion:{ type: Date },
-    fechaModificacion:{ type: Date }
+    fechaModificacion:{ type: Date },
+    creadopor:{type:mongoose.Schema.Types.ObjectId,ref:'SGUsuarios'},
+    modificadopor:{type:mongoose.Schema.Types.ObjectId,ref:'SGUsuarios'}
     
 });
 
