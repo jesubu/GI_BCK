@@ -37,8 +37,36 @@ function getModulo(req,res){
     });
 }
 
+
+function saveModulo(req,res){
+    
+    var modulo=new SGModulo();
+    
+    var params=req.body;
+
+    modulo.codModulo=params.codModulo;
+    modulo.nombre=params.nombre;
+    modulo.fechaCreacion=params.fechaCreacion;
+    modulo.fechaModificacion=null;
+    modulo.creadoPor=params.creadoPor;
+    modulo.modificadoPor=null;
+    
+    console.log(modulo);
+    modulo.save((err,moduloStored)=>{
+        if(err){
+            console.log(err);
+            res.status(500).send({message:'Error al guardar el marcador',errors:err});
+        }
+        else{
+            res.status(201).send({modulo:moduloStored});
+        }
+
+    });    
+}
+
 module.exports={
     getModulos,
-    getModulo
+    getModulo,
+    saveModulo
 
 }

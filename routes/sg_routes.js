@@ -28,7 +28,7 @@ api.get('/usuarios',SGUsuarioController.getUsuarios);
 //----------------
 api.get('/modulo/:id',SGModuloController.getModulo);
 api.get('/modulos',SGModuloController.getModulos);
-
+api.post('/modulo',SGModuloController.saveModulo);
 
 
 module.exports=api;
