@@ -1,5 +1,5 @@
 'use strict'
-
+//TODA PETICION TIENE K SER VALIDADA EN EN BACKEND ASÍ COMO EL TOKEN
 var mongoose=require('mongoose');
 var app=require('./app.js');
 var port=process.env.PORT || 3678;

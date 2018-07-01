@@ -64,9 +64,43 @@ function saveModulo(req,res){
     });    
 }
 
+function updateModulo(req,res){
+    var modulo=new SGModulo();
+    
+    var params=req.body;
+    var oId=req.params.id;
+    modulo.codModulo=params.codModulo;
+    modulo.nombre=params.nombre;
+    modulo.fechaCreacion=params.fechaCreacion;
+    modulo.fechaModificacion=null;
+    modulo.creadoPor=params.creadoPor;
+    modulo.modificadoPor=null;
+    console.log('Actualizando: ' + modulo.nombre + ' -ID:'+oId);
+
+    var update=req.body;
+    
+     SGModulo.findByIdAndUpdate(oId,update,(err,moduloUpdated)=>{
+        if(err){
+            res.status(500).send({message:'Error al actualizar el marcador'});
+        }
+        else{
+            res.status(200).send({update:true, modulo:moduloUpdated});
+        }      
+    });   
+}
+
+function pruebas(req,res){
+    res.status(200).send({
+        message:'login'
+    });
+}
+
+
 module.exports={
     getModulos,
     getModulo,
-    saveModulo
+    saveModulo,
+    updateModulo,
+    pruebas
 
 }

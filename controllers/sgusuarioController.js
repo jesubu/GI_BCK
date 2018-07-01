@@ -2,6 +2,7 @@
 
 var SGUsuario=require('../models/SGUsuario');
 var bcrypt = require('bcryptjs');
+var jwt=require('../services/jwt.js');
 
 //en el post encriptamos la pass enviada del usuario:
 //var passEncrip=bcrypt.hashSync(valor,10); //la segunda variable es el salt que suele ser 10.
@@ -40,8 +41,32 @@ function getUsuario(req,res){
     });
 }
 
+function updatePassUsuario(req,res){
+    var usuario=new SGUsuario();
+    
+    var params=req.body;
+    var oId=req.params.id;
+    usuario.password=bcrypt.hashSync(params.password);
+
+    console.log('Actualizando ID:'+oId + ' pass:' + usuario.password) ;
+  
+    req.body.password=bcrypt.hashSync(params.password);
+
+    SGUsuario.findByIdAndUpdate(oId,update,(err,usuarioPassUpdated)=>{
+        if(err){
+            res.status(500).send({message:'Error al actualizar el marcador'});
+        }
+        else{
+            res.status(200).send({update:true, usuario:usuarioPassUpdated});
+        }      
+    });   
+}
+
+
+
 module.exports={
     getUsuarios,
-    getUsuario
+    getUsuario,
+    updatePassUsuario
 
 }
